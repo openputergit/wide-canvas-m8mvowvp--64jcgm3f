@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureCam - CCTV Camera Installation Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                        accent: '#f59e0b',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .slide-in {
+            animation: slideIn 0.3s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .smooth-transition {
+            transition: all 0.3s ease;
+        }
+        /* Image gallery styles */
+        .gallery-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .gallery-container::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .hoverable-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 min-h-screen flex flex-col">
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="text-primary font-bold text-2xl">SecureCam</div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#home" class="navlink text-primary font-medium">Home</a>
+                    <a href="#about" class="navlink hover:text-primary font-medium">About</a>
+                    <a href="#services" class="navlink hover:text-primary font-medium">Services</a>
+                    <a href="#products" class="navlink hover:text-primary font-medium">Products</a>
+                    <a href="#pricing" class="navlink hover:text-primary font-medium">Pricing</a>
+                    <a href="#testimonials" class="navlink hover:text-primary font-medium">Testimonials</a>
+                    <a href="#blog" class="navlink hover:text-primary font-medium">Blog</a>
+                    <a href="#contact" class="navlink hover:text-primary font-medium">Contact</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-600 focus:outline-none" id="mobileMenuBtn">
+                    <i class="bi bi-list text-2xl"></i>
+                </button>
+                
+                <!-- Admin Button -->
+                <button class="hidden md:block bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg transition duration-300" id="adminLoginBtn">
+                    Admin Login
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="md:hidden hidden bg-white w-full py-2 px-4 shadow-lg" id="mobileMenu">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="py-2 px-3 hover:bg-gray-100 rounded">Home</a>
+                <a href="#about" class="py-2 px-3 hover:bg-gray-100 rounded">About</a>
+                <a href="#services" class="py-2 px-3 hover:bg-gray-100 rounded">Services</a>
+                <a href="#products" class="py-2 px-3 hover:bg-gray-100 rounded">Products</a>
+                <a href="#pricing" class="py-2 px-3 hover:bg-gray-100 rounded">Pricing</a>
+                <a href="#testimonials" class="py-2 px-3 hover:bg-gray-100 rounded">Testimonials</a>
+                <a href="#blog" class="py-2 px-3 hover:bg-gray-100 rounded">Blog</a>
+                <a href="#contact" class="py-2 px-3 hover:bg-gray-100 rounded">Contact</a>
+                <a href="#" class="py-2 px-3 bg-primary text-white rounded text-center" id="mobileAdminBtn">Admin Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/2 mb-10 md:mb-0">
+                        <h1 class="text-3xl md:text-5xl font-bold mb-6">Secure Your Property with Advanced CCTV Solutions</h1>
+                        <p class="text-lg mb-8 text-blue-100">Professional installation services for homes, businesses, and industrial facilities. Get 24/7 surveillance with cutting-edge camera systems.</p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <button class="bg-accent hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                                Get a Free Quote
+                            </button>
+                            <button class="border border-white text-white hover:bg-white hover:text-blue-800 px-6 py-3 rounded-lg font-medium transition duration-300">
+                                View Our Solutions
+                            </button>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="bg-white p-1 rounded-lg shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="CCTV Installation" class="rounded-lg w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Highlight -->
+        <section class="py-10 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="w-16 h-16 flex items-center justify-center bg-blue-100 text-primary rounded-full mb-4">
+                            <i class="bi bi-shield-check text-3xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">24/7 Protection</h3>
+                        <p class="text-sm text-gray-600">Round-the-clock surveillance for your peace of mind</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="w-16 h-16 flex items-center justify-center bg-blue-100 text-primary rounded-full mb-4">
+                            <i class="bi bi-tools text-3xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Professional Installation</h3>
+                        <p class="text-sm text-gray-600">Expert technicians with years of experience</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="w-16 h-16 flex items-center justify-center bg-blue-100 text-primary rounded-full mb-4">
+                            <i class="bi bi-phone text-3xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Mobile Monitoring</h3>
+                        <p class="text-sm text-gray-600">View your cameras anytime, anywhere</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="w-16 h-16 flex items-center justify-center bg-blue-100 text-primary rounded-full mb-4">
+                            <i class="bi bi-headset text-3xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">24/7 Support</h3>
+                        <p class="text-sm text-gray-600">Always available customer service</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">About SecureCam</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                    <p class="max-w-3xl mx-auto text-lg text-gray-600">Your trusted partner in security solutions since 2005</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Our Team" class="rounded-lg shadow-lg w-full h-auto">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-semibold mb-4">Why Choose Us?</h3>
+                        <p class="text-gray-600 mb-6">With over 15 years in the security industry, SecureCam has established itself as a leader in CCTV installation and security solutions. Our team of certified technicians brings expertise and professionalism to every project, ensuring optimal security coverage for your property.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="text-primary mr-3 mt-1"><i class="bi bi-check-circle-fill"></i></div>
+                                <div>
+                                    <h4 class="font-semibold">Experienced Team</h4>
+                                    <p class="text-sm text-gray-600">Our technicians have an average of 8+ years in the field</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-primary mr-3 mt-1"><i class="bi bi-check-circle-fill"></i></div>
+                                <div>
+                                    <h4 class="font-semibold">Quality Equipment</h4>
+                                    <p class="text-sm text-gray-600">We only use industry-leading security cameras and components</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-primary mr-3 mt-1"><i class="bi bi-check-circle-fill"></i></div>
+                                <div>
+                                    <h4 class="font-semibold">Custom Solutions</h4>
+                                    <p class="text-sm text-gray-600">Every installation is tailored to your specific security needs</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-primary mr-3 mt-1"><i class="bi bi-check-circle-fill"></i></div>
+                                <div>
+                                    <h4 class="font-semibold">Satisfaction Guarantee</h4>
+                                    <p class="text-sm text-gray-600">We're not happy until you're 100% satisfied with our work</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-8 bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                            Learn More About Us
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Our Services</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                    <p class="max-w-3xl mx-auto text-lg text-gray-600">Comprehensive security solutions for every need</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hoverable-card transition-all duration-300">
+                        <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="bi bi-house text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Residential Installation</h3>
+                        <p class="text-gray-600 mb-4">Protect your home with state-of-the-art CCTV systems designed for residential properties. Custom solutions to monitor entrances, driveways, and property perimeters.</p>
+                        <a href="#" class="text-primary font-medium flex items-center">
+                            Learn More <i class="bi bi-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hoverable-card transition-all duration-300">
+                        <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="bi bi-building text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Commercial Security</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive security systems for offices, retail stores, warehouses, and other commercial properties. Includes access control integration and analytics.</p>
+                        <a href="#" class="text-primary font-medium flex items-center">
+                            Learn More <i class="bi bi-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hoverable-card transition-all duration-300">
+                        <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="bi bi-gear text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Industrial Security</h3>
+                        <p class="text-gray-600 mb-4">Heavy-duty surveillance solutions for manufacturing plants, construction sites, and industrial facilities. Ruggedized cameras and extended coverage options.</p>
+                        <a href="#" class="text-primary font-medium flex items-center">
+                            Learn More <i class="bi bi-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hoverable-card transition-all duration-300">
+                        <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="bi bi-tools text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Maintenance & Repairs</h3>
+                        <p class="text-gray-600 mb-4">Keep your security systems in optimal condition with our professional maintenance services. Fast response for emergency repairs and system issues.</p>
+                        <a href="#" class="text-primary font-medium flex items-center">
+                            Learn More <i class="bi bi-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hoverable-card transition-all duration-300">
+                        <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="bi bi-arrow-repeat text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">System Upgrades</h3>
+                        <p class="text-gray-600 mb-4">Modernize your existing security setup with the latest technology. We can upgrade analog systems to digital HD surveillance with minimal disruption.</p>
+                        <a href="#" class="text-primary font-medium flex items-center">
+                            Learn More <i class="bi bi-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Service 6 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hoverable-card transition-all duration-300">
+                        <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="bi bi-cloud-arrow-up text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Remote Monitoring</h3>
+                        <p class="text-gray-600 mb-4">24/7 monitoring solutions with cloud storage and mobile app access. View live feeds and receive alerts from anywhere in the world.</p>
+                        <a href="#" class="text-primary font-medium flex items-center">
+                            Learn More <i class="bi bi-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Our Products</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                    <p class="max-w-3xl mx-auto text-lg text-gray-600">Industry-leading cameras and security equipment</p>
+                </div>
+
+                <!-- Filter Options -->
+                <div class="flex flex-wrap justify-center mb-8 gap-3">
+                    <button class="product-filter px-5 py-2 rounded-full bg-primary text-white" data-filter="all">All Products</button>
+                    <button class="product-filter px-5 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="indoor">Indoor Cameras</button>
+                    <button class="product-filter px-5 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="outdoor">Outdoor Cameras</button>
+                    <button class="product-filter px-5 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="nvr">NVR Systems</button>
+                    <button class="product-filter px-5 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="accessories">Accessories</button>
+                </div>
+                
+                <!-- Products Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="productsGrid">
+                    <!-- Product 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden product-item hoverable-card transition-all duration-300" data-category="outdoor">
+                        <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="HD Outdoor Camera" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-semibold">HD Outdoor Camera</h3>
+                                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded-full">Outdoor</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">4K Ultra HD resolution with night vision and weatherproof design. Perfect for outdoor monitoring.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-xl text-primary">$199.99</span>
+                                <button class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg font-medium transition duration-300">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden product-item hoverable-card transition-all duration-300" data-category="indoor">
+                        <img src="https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Dome Indoor Camera" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-semibold">Dome Indoor Camera</h3>
+                                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded-full">Indoor</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">1080p HD resolution with 360° rotation and zoom capability. Ideal for indoor surveillance.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-xl text-primary">$149.99</span>
+                                <button class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg font-medium transition duration-300">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden product-item hoverable-card transition-all duration-300" data-category="nvr">
+                        <img src="https://images.unsplash.com/photo-1563770660941-10de1cedfc33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="8-Channel NVR System" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-semibold">8-Channel NVR System</h3>
+                                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded-full">NVR</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">High-performance NVR with 2TB storage, remote access and 8-camera support.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-xl text-primary">$399.99</span>
+                                <button class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg font-medium transition duration-300">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden product-item hoverable-card transition-all duration-300" data-category="outdoor">
+                        <img src="https://images.unsplash.com/photo-1573164574511-73c773193279?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="PTZ Outdoor Camera" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-semibold">PTZ Outdoor Camera</h3>
+                                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded-full">Outdoor</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">Pan-Tilt-Zoom camera with 30x optical zoom and motion tracking capabilities.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-xl text-primary">$299.99</span>
+                                <button class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg font-medium transition duration-300">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 5 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden product-item hoverable-card transition-all duration-300" data-category="accessories">
+                        <img src="https://images.unsplash.com/photo-1550077498-4b1c3e837b39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="CCTV Cables & Connectors Kit" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-semibold">Cables & Connectors Kit</h3>
+                                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded-full">Accessories</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">Complete set of professional-grade cables, connectors, and mounting hardware for installation.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-xl text-primary">$89.99</span>
+                                <button class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg font-medium transition duration-300">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 6 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden product-item hoverable-card transition-all duration-300" data-category="indoor">
+                        <img src="https://images.unsplash.com/photo-1600087309979-03e0cc1dbef1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Wireless IP Camera" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-semibold">Wireless IP Camera</h3>
+                                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded-full">Indoor</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">Easy setup wireless camera with two-way audio and intelligent motion detection.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-xl text-primary">$129.99</span>
+                                <button class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg font-medium transition duration-300">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <button class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                        View All Products
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Pricing Packages</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                    <p class="max-w-3xl mx-auto text-lg text-gray-600">Affordable security solutions for every budget</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Basic Package -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hoverable-card transition-all duration-300 border border-gray-200">
+                        <div class="p-6 bg-gray-50 border-b">
+                            <h3 class="text-2xl font-bold mb-2 text-center">Basic</h3>
+                            <div class="text-center">
+                                <span class="text-4xl font-bold text-primary">$599</span>
+                                <span class="text-gray-500">/package</span>
+                            </div>
+                            <p class="text-center text-gray-600 mt-2">Ideal for small homes</p>
+                        </div>
+                        <div class="p-6">
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>4 HD Security Cameras</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>4-Channel DVR with 1TB Storage</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>Mobile App Access</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>Professional Installation</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>1-Year Equipment Warranty</span>
+                                </li>
+                                <li class="flex items-start text-gray-400">
+                                    <i class="bi bi-x-circle-fill text-red-400 mr-2 mt-1"></i>
+                                    <span>Motion Detection Alerts</span>
+                                </li>
+                                <li class="flex items-start text-gray-400">
+                                    <i class="bi bi-x-circle-fill text-red-400 mr-2 mt-1"></i>
+                                    <span>Cloud Storage</span>
+                                </li>
+                            </ul>
+                            <button class="w-full mt-8 bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Standard Package -->
+                    <div class="bg-white rounded-lg shadow-2xl overflow-hidden transform scale-105 border-2 border-primary hoverable-card transition-all duration-300 relative z-10">
+                        <div class="absolute top-0 right-0 bg-accent text-white px-4 py-1 font-semibold">
+                            Most Popular
+                        </div>
+                        <div class="p-6 bg-blue-50 border-b border-blue-100">
+                            <h3 class="text-2xl font-bold mb-2 text-center">Standard</h3>
+                            <div class="text-center">
+                                <span class="text-4xl font-bold text-primary">$999</span>
+                                <span class="text-gray-500">/package</span>
+                            </div>
+                            <p class="text-center text-gray-600 mt-2">Perfect for medium homes & small businesses</p>
+                        </div>
+                        <div class="p-6">
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>8 HD Security Cameras</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>8-Channel NVR with 2TB Storage</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>Mobile App Access</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>Professional Installation</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>2-Year Equipment Warranty</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>Motion Detection Alerts</span>
+                                </li>
+                                <li class="flex items-start text-gray-400">
+                                    <i class="bi bi-x-circle-fill text-red-400 mr-2 mt-1"></i>
+                                    <span>Cloud Storage</span>
+                                </li>
+                            </ul>
+                            <button class="w-full mt-8 bg-accent hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Premium Package -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hoverable-card transition-all duration-300 border border-gray-200">
+                        <div class="p-6 bg-gray-50 border-b">
+                            <h3 class="text-2xl font-bold mb-2 text-center">Premium</h3>
+                            <div class="text-center">
+                                <span class="text-4xl font-bold text-primary">$1,499</span>
+                                <span class="text-gray-500">/package</span>
+                            </div>
+                            <p class="text-center text-gray-600 mt-2">For large properties & businesses</p>
+                        </div>
+                        <div class="p-6">
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>16 4K Ultra HD Security Cameras</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>16-Channel NVR with 4TB Storage</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>Mobile & Desktop App Access</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>Professional Installation</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>3-Year Equipment Warranty</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>AI-Enhanced Motion Detection</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="bi bi-check-circle-fill text-green-500 mr-2 mt-1"></i>
+                                    <span>1-Year Cloud Storage Included</span>
+                                </li>
+                            </ul>
+                            <button class="w-full mt-8 bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <p class="text-gray-600 mb-4">Need a custom solution? We can tailor a security package to your specific requirements.</p>
+                    <button class="bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                        Request Custom Quote
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Client Testimonials</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                    <p class="max-w-3xl mx-auto text-lg text-gray-600">See what our satisfied customers have to say</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="testimonialsGrid">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 relative hoverable-card transition-all duration-300">
+                        <div class="absolute -top-5 left-6 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white text-xl">
+                            <i class="bi bi-quote"></i>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-gray-600 mb-4 italic">"The team at SecureCam did an amazing job installing our home security system. The cameras are discreetly placed yet provide full coverage of our property. Highly recommend their services!"</p>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                                <div>
+                                    <h4 class="font-semibold">Robert Johnson</h4>
+                                    <p class="text-sm text-gray-500">Homeowner</p>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex text-yellow-400">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 relative hoverable-card transition-all duration-300">
+                        <div class="absolute -top-5 left-6 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white text-xl">
+                            <i class="bi bi-quote"></i>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-gray-600 mb-4 italic">"As a retail store owner, security was a major concern. SecureCam provided a comprehensive solution that has already prevented theft incidents. Their customer support is exceptional!"</p>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                                <div>
+                                    <h4 class="font-semibold">Jennifer Smith</h4>
+                                    <p class="text-sm text-gray-500">Business Owner</p>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex text-yellow-400">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 relative hoverable-card transition-all duration-300">
+                        <div class="absolute -top-5 left-6 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white text-xl">
+                            <i class="bi bi-quote"></i>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-gray-600 mb-4 italic">"We upgraded our old analog system to a new digital HD setup with SecureCam. The difference in quality is night and day. The mobile app makes monitoring our warehouse simple and convenient."</p>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                                <div>
+                                    <h4 class="font-semibold">Michael Williams</h4>
+                                    <p class="text-sm text-gray-500">Warehouse Manager</p>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex text-yellow-400">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Latest Security Tips & News</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                    <p class="max-w-3xl mx-auto text-lg text-gray-600">Stay informed with the latest security trends and advice</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Blog Post 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hoverable-card transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Top 5 Places to Install Security Cameras" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <span class="text-sm text-gray-500"><i class="bi bi-calendar mr-2"></i>Oct 12, 2023</span>
+                                <span class="mx-2 text-gray-300">|</span>
+                                <span class="text-sm text-gray-500"><i class="bi bi-person mr-2"></i>Admin</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Top 5 Places to Install Security Cameras for Maximum Coverage</h3>
+                            <p class="text-gray-600 mb-4">Learn the strategic locations to place your security cameras to ensure complete protection of your property...</p>
+                            <a href="#" class="text-primary font-medium flex items-center">
+                                Read More <i class="bi bi-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Blog Post 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hoverable-card transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1551703599-6b3e8298107f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Wireless vs Wired Systems" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <span class="text-sm text-gray-500"><i class="bi bi-calendar mr-2"></i>Oct 5, 2023</span>
+                                <span class="mx-2 text-gray-300">|</span>
+                                <span class="text-sm text-gray-500"><i class="bi bi-person mr-2"></i>Tech Team</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Wireless vs. Wired Security Systems: Pros and Cons</h3>
+                            <p class="text-gray-600 mb-4">Understand the differences between wireless and wired security systems to make an informed choice for your property...</p>
+                            <a href="#" class="text-primary font-medium flex items-center">
+                                Read More <i class="bi bi-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Blog Post 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hoverable-card transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="AI in Security Systems" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <span class="text-sm text-gray-500"><i class="bi bi-calendar mr-2"></i>Sep 28, 2023</span>
+                                <span class="mx-2 text-gray-300">|</span>
+                                <span class="text-sm text-gray-500"><i class="bi bi-person mr-2"></i>Security Expert</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">How AI is Revolutionizing Modern Security Camera Systems</h3>
+                            <p class="text-gray-600 mb-4">Explore the latest advancements in artificial intelligence and how they're enhancing security surveillance capabilities...</p>
+                            <a href="#" class="text-primary font-medium flex items-center">
+                                Read More <i class="bi bi-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <button class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                        View All Articles
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 bg-gradient-to-r from-blue-900 to-blue-700">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-2/3 mb-8 md:mb-0">
+                        <h2 class="text-3xl font-bold text-white mb-4">Ready to Secure Your Property?</h2>
+                        <p class="text-blue-100 text-lg mb-0">Contact us today for a free consultation and security assessment.</p>
+                    </div>
+                    <div class="md:w-1/3 text-center">
+                        <a href="#contact" class="inline-block bg-accent hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-medium text-lg transition duration-300">
+                            Get a Free Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                    <p class="max-w-3xl mx-auto text-lg text-gray-600">We're here to answer your questions and provide security solutions</p>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row gap-10">
+                    <div class="lg:w-1/3">
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-lg h-full">
+                            <h3 class="text-xl font-semibold mb-6">Get In Touch</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary mr-4">
+                                        <i class="bi bi-geo-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">Our Location</h4>
+                                        <p class="text-gray-600">123 Security Ave, Cityville, ST 12345</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary mr-4">
+                                        <i class="bi bi-telephone"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">Call Us</h4>
+                                        <p class="text-gray-600">(123) 456-7890</p>
+                                        <p class="text-gray-600">Toll-free: 1-800-SECURE</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary mr-4">
+                                        <i class="bi bi-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">Email Us</h4>
+                                        <p class="text-gray-600">info@securecam.com</p>
+                                        <p class="text-gray-600">support@securecam.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary mr-4">
+                                        <i class="bi bi-clock"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">Business Hours</h4>
+                                        <p class="text-gray-600">Monday-Friday: 8am - 6pm</p>
+                                        <p class="text-gray-600">Saturday: 9am - 2pm</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8">
+                                <h4 class="font-semibold mb-3">Follow Us</h4>
+                                <div class="flex space-x-3">
+                                    <a href="#" class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white hover:bg-blue-700 transition duration-300">
+                                        <i class="bi bi-facebook"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center text-white hover:bg-blue-500 transition duration-300">
+                                        <i class="bi bi-twitter"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white hover:bg-red-700 transition duration-300">
+                                        <i class="bi bi-youtube"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-white hover:bg-pink-700 transition duration-300">
+                                        <i class="bi bi-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-2/3">
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <h3 class="text-xl font-semibold mb-6">Send Us a Message</h3>
+                            
+                            <form id="contactForm" class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-gray-700 mb-2">Your Name *</label>
+                                        <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 mb-2">Your Email *</label>
+                                        <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Subject</label>
+                                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Your Message *</label>
+                                    <textarea rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+                                </div>
+                                
+                                <div>
+                                    <button type="submit" class="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg font-medium transition duration-300">
+                                        Send Message
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Login Modal -->
+        <div id="adminLoginModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white p-8 rounded-lg max-w-md w-full">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold">Admin Login</h2>
+                    <button id="closeAdminModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+                <form id="adminLoginForm">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">Username</label>
+                        <input type="text" id="adminUsername" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-2">Password</label>
+                        <input type="password" id="adminPassword" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                    </div>
+                    <button type="submit" class="w-full bg-primary hover:bg-secondary text-white px-4 py-2 rounded-md transition duration-300">Login</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Live Chat Widget -->
+    <div id="liveChatWidget" class="fixed bottom-6 right-6 z-40">
+        <div id="chatContainer" class="hidden bg-white rounded-lg shadow-xl w-80 overflow-hidden">
+            <div class="bg-primary text-white p-4 flex justify-between items-center">
+                <h3 class="font-semibold">Live Chat Support</h3>
+                <button id="minimizeChatBtn" class="text-white hover:text-gray-200">
+                    <i class="bi bi-dash-lg"></i>
+                </button>
+            </div>
+            <div id="chatMessages" class="h-80 p-4 overflow-y-auto bg-gray-50">
+                <div class="chat-message mb-3">
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 text-primary p-3 rounded-lg rounded-tl-none max-w-xs">
+                            <p>Hi there! How can we help you today?</p>
+                        </div>
+                    </div>
+                    <span class="text-xs text-gray-500 mt-1 block">Support • 10:30 AM</span>
+                </div>
+            </div>
+            <div class="p-4 border-t">
+                <div class="flex">
+                    <input type="text" id="chatInput" class="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Type your message...">
+                    <button id="sendMessageBtn" class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-r-md transition duration-300">
+                        <i class="bi bi-send"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button id="openChatBtn" class="w-14 h-14 bg-primary hover:bg-secondary text-white rounded-full flex items-center justify-center shadow-lg transition duration-300">
+            <i class="bi bi-chat-dots-fill text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-white text-xl font-bold mb-4">SecureCam</h3>
+                    <p class="mb-4">Providing top-quality security solutions since 2005. We're dedicated to keeping your property safe with cutting-edge technology and expert service.</p>
+                    <div class="flex space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#about" class="hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#services" class="hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#products" class="hover:text-white transition duration-300">Products</a></li>
+                        <li><a href="#contact" class="hover:text-white transition duration-300">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition duration-300">Residential Installation</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Commercial Security</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Industrial Security</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Maintenance & Repairs</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">System Upgrades</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Remote Monitoring</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="bi bi-geo-alt-fill mr-3 mt-1"></i>
+                            <span>123 Security Ave, Cityville, ST 12345</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="bi bi-telephone-fill mr-3 mt-1"></i>
+                            <span>(123) 456-7890</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="bi bi-envelope-fill mr-3 mt-1"></i>
+                            <span>info@securecam.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="bi bi-clock-fill mr-3 mt-1"></i>
+                            <span>Mon-Fri: 8am - 6pm<br>Sat: 9am - 2pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center">
+                <p>&copy; 2023 SecureCam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Invoice Management System Modal -->
+    <div id="invoiceSystemModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center overflow-y-auto">
+        <div class="bg-white rounded-lg shadow-xl max-w-6xl w-full mx-4 my-8">
+            <div class="bg-blue-600 p-4 rounded-t-lg">
+                <div class="container mx-auto flex justify-between items-center">
+                    <h1 class="text-2xl font-bold text-white">Invoice Management System</h1>
+                    <div class="flex space-x-4">
+                        <button onclick="showInvoiceSection('dashboard')" class="text-white hover:text-blue-200">Dashboard</button>
+                        <button onclick="showInvoiceSection('clients')" class="text-white hover:text-blue-200">Clients</button>
+                        <button onclick="showInvoiceSection('invoices')" class="text-white hover:text-blue-200">Invoices</button>
+                        <button onclick="showInvoiceSection('blacklist')" class="text-white hover:text-blue-200">Blacklist</button>
+                        <button id="closeInvoiceSystemBtn" class="text-white hover:text-red-100">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-6 max-h-[80vh] overflow-y-auto">
+                <!-- Dashboard Section -->
+                <section id="invoiceDashboard" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="text-xl font-semibold mb-2">Total Invoices</h3>
+                            <p class="text-3xl font-bold text-blue-600">45</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="text-xl font-semibold mb-2">Pending Payments</h3>
+                            <p class="text-3xl font-bold text-yellow-600">12</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="text-xl font-semibold mb-2">Overdue Invoices</h3>
+                            <p class="text-3xl font-bold text-red-600">5</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h2 class="text-2xl font-bold mb-4">Recent Activities</h2>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center border-b pb-2">
+                                <span>Invoice #2023001 generated for Client A</span>
+                                <span class="text-gray-500">2 hours ago</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b pb-2">
+                                <span>Payment received from Client B</span>
+                                <span class="text-gray-500">5 hours ago</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b pb-2">
+                                <span>Reminder sent to Client C</span>
+                                <span class="text-gray-500">1 day ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Clients Section -->
+                <section id="invoiceClients" class="hidden">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold">Client Management</h2>
+                            <button onclick="showAddClientModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                Add New Client
+                            </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="p-3 text-left">Client Name</th>
+                                        <th class="p-3 text-left">Email</th>
+                                        <th class="p-3 text-left">Status</th>
+                                        <th class="p-3 text-left">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="clientTableBody">
+                                    <!-- Sample Client Data -->
+                                    <tr class="border-b">
+                                        <td class="p-3">Client A</td>
+                                        <td class="p-3">clienta@example.com</td>
+                                        <td class="p-3"><span class="bg-green-200 text-green-800 px-2 py-1 rounded">Active</span></td>
+                                        <td class="p-3">
+                                            <button class="text-blue-600 hover:text-blue-800 mr-2">Edit</button>
+                                            <button class="text-red-600 hover:text-red-800">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Invoices Section -->
+                <section id="invoiceInvoices" class="hidden">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold">Invoice Management</h2>
+                            <button onclick="generateInvoice()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                Generate New Invoice
+                            </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="p-3 text-left">Invoice ID</th>
+                                        <th class="p-3 text-left">Client</th>
+                                        <th class="p-3 text-left">Amount</th>
+                                        <th class="p-3 text-left">Status</th>
+                                        <th class="p-3 text-left">Due Date</th>
+                                        <th class="p-3 text-left">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="invoiceTableBody">
+                                    <!-- Sample Invoice Data -->
+                                    <tr class="border-b">
+                                        <td class="p-3">#2023001</td>
+                                        <td class="p-3">Client A</td>
+                                        <td class="p-3">$1,500</td>
+                                        <td class="p-3"><span class="bg-yellow-200 text-yellow-800 px-2 py-1 rounded">Pending</span></td>
+                                        <td class="p-3">2023-12-31</td>
+                                        <td class="p-3">
+                                            <button onclick="viewInvoice('2023001')" class="text-blue-600 hover:text-blue-800 mr-2">View</button>
+                                            <button onclick="sendReminder('2023001')" class="text-green-600 hover:text-green-800">Send Reminder</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Blacklist Section -->
+                <section id="invoiceBlacklist" class="hidden">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h2 class="text-2xl font-bold mb-6">Blacklisted Clients</h2>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="p-3 text-left">Client Name</th>
+                                        <th class="p-3 text-left">Email</th>
+                                        <th class="p-3 text-left">Reason</th>
+                                        <th class="p-3 text-left">Date Blacklisted</th>
+                                        <th class="p-3 text-left">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="blacklistTableBody">
+                                    <!-- Sample Blacklisted Client -->
+                                    <tr class="border-b">
+                                        <td class="p-3">Client X</td>
+                                        <td class="p-3">clientx@example.com</td>
+                                        <td class="p-3">Multiple Payment Defaults</td>
+                                        <td class="p-3">2023-11-15</td>
+                                        <td class="p-3">
+                                            <button onclick="removeFromBlacklist(1)" class="text-blue-600 hover:text-blue-800">Remove from Blacklist</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Client Modal -->
+    <div id="addClientModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-4">Add New Client</h2>
+            <form id="addClientForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Client Name</label>
+                    <input type="text" class="mt-1 block w-full rounded border-gray-300 shadow-sm p-2 border" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" class="mt-1 block w-full rounded border-gray-300 shadow-sm p-2 border" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Phone</label>
+                    <input type="tel" class="mt-1 block w-full rounded border-gray-300 shadow-sm p-2 border">
+                </div>
+                <div class="flex justify-end space-x-3">
+                    <button type="button" onclick="hideAddClientModal()" class="bg-gray-200 px-4 py-2 rounded">Cancel</button>
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Add Client</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Navigation - Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('slide-in');
+        });
+
+        // Admin Login Modal
+        const adminLoginBtn = document.getElementById('adminLoginBtn');
+        const mobileAdminBtn = document.getElementById('mobileAdminBtn');
+        const adminLoginModal = document.getElementById('adminLoginModal');
+        const closeAdminModal = document.getElementById('closeAdminModal');
+        const adminLoginForm = document.getElementById('adminLoginForm');
+
+        adminLoginBtn.addEventListener('click', () => {
+            adminLoginModal.classList.remove('hidden');
+            adminLoginModal.classList.add('fade-in');
+        });
+
+        mobileAdminBtn.addEventListener('click', () => {
+            adminLoginModal.classList.remove('hidden');
+            adminLoginModal.classList.add('fade-in');
+            mobileMenu.classList.add('hidden');
+        });
+
+        closeAdminModal.addEventListener('click', () => {
+            adminLoginModal.classList.add('hidden');
+        });
+
+        adminLoginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            // For demo purposes, show the invoice system on successful login
+            if (username && password) {
+                adminLoginModal.classList.add('hidden');
+                document.getElementById('invoiceSystemModal').classList.remove('hidden');
+                showInvoiceSection('dashboard');
+            }
+        });
+
+        // Product Filtering
+        const productFilters = document.querySelectorAll('.product-filter');
+        const productItems = document.querySelectorAll('.product-item');
+
+        productFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                // Update active filter styling
+                productFilters.forEach(f => {
+                    f.classList.remove('bg-primary', 'text-white');
+                    f.classList.add('bg-gray-200', 'hover:bg-gray-300');
+                });
+                filter.classList.remove('bg-gray-200', 'hover:bg-gray-300');
+                filter.classList.add('bg-primary', 'text-white');
+                
+                const filterValue = filter.getAttribute('data-filter');
+                
+                productItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Live Chat Widget
+        const openChatBtn = document.getElementById('openChatBtn');
+        const minimizeChatBtn = document.getElementById('minimizeChatBtn');
+        const chatContainer = document.getElementById('chatContainer');
+        const chatInput = document.getElementById('chatInput');
+        const sendMessageBtn = document.getElementById('sendMessageBtn');
+        const chatMessages = document.getElementById('chatMessages');
+
+        openChatBtn.addEventListener('click', () => {
+            openChatBtn.classList.add('hidden');
+            chatContainer.classList.remove('hidden');
+        });
+
+        minimizeChatBtn.addEventListener('click', () => {
+            chatContainer.classList.add('hidden');
+            openChatBtn.classList.remove('hidden');
+        });
+
+        function sendChatMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                // Add user message
+                const userMessage = `
+                    <div class="chat-message mb-3">
+                        <div class="flex justify-end">
+                            <div class="bg-primary text-white p-3 rounded-lg rounded-tr-none max-w-xs">
+                                <p>${message}</p>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-500 mt-1 block text-right">You • ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                    </div>
+                `;
+                chatMessages.innerHTML += userMessage;
+                chatInput.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Simulate response after a delay
+                setTimeout(() => {
+                    const botMessage = `
+                        <div class="chat-message mb-3">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 text-primary p-3 rounded-lg rounded-tl-none max-w-xs">
+                                    <p>Thanks for reaching out! One of our security experts will be with you shortly.</p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-gray-500 mt-1 block">Support • ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                        </div>
+                    `;
+                    chatMessages.innerHTML += botMessage;
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        sendMessageBtn.addEventListener('click', sendChatMessage);
+        
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendChatMessage();
+            }
+        });
+
+        // Invoice Management System
+        const closeInvoiceSystemBtn = document.getElementById('closeInvoiceSystemBtn');
+        const invoiceSystemModal = document.getElementById('invoiceSystemModal');
+
+        closeInvoiceSystemBtn.addEventListener('click', () => {
+            invoiceSystemModal.classList.add('hidden');
+        });
+
+        function showInvoiceSection(sectionId) {
+            document.querySelectorAll('#invoiceSystemModal section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById('invoice' + sectionId.charAt(0).toUpperCase() + sectionId.slice(1)).classList.remove('hidden');
+        }
+
+        // Client Management
+        function showAddClientModal() {
+            document.getElementById('addClientModal').classList.remove('hidden');
+        }
+
+        function hideAddClientModal() {
+            document.getElementById('addClientModal').classList.add('hidden');
+        }
+
+        document.getElementById('addClientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add client logic here
+            hideAddClientModal();
+            
+            // Show success message
+            alert('Client added successfully!');
+        });
+
+        // Invoice Management
+        function generateInvoice() {
+            alert('Generating new invoice...');
+        }
+
+        function viewInvoice(invoiceId) {
+            alert('Viewing invoice ' + invoiceId);
+        }
+
+        function sendReminder(invoiceId) {
+            alert('Sending reminder for invoice ' + invoiceId);
+        }
+
+        // Blacklist Management
+        function removeFromBlacklist(clientId) {
+            alert('Removing client from blacklist...');
+        }
+
+        // Contact form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will contact you shortly.');
+            this.reset();
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
